@@ -19,11 +19,9 @@ namespace BethanysPieShop.Controllers
             ICategoryRepository categoryRepository)
         {
 
-            _pieRepository = pieRepository ??
-               throw new ArgumentNullException(nameof(pieRepository));
+            _pieRepository = pieRepository;
 
-            _categoryRepository = categoryRepository ??
-                throw new ArgumentNullException(nameof(categoryRepository));
+            _categoryRepository = categoryRepository;
 
 
         }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
@@ -27,8 +28,6 @@ namespace BethanysPieShop.Controllers
         }
 
 
-
-
         public ViewResult List()
         {
             PiesListViewModel piesListViewModel = new PiesListViewModel();
@@ -36,6 +35,20 @@ namespace BethanysPieShop.Controllers
             piesListViewModel.Pies = _pieRepository.AllPies;
             piesListViewModel.CurrentCategory = "Chees cakes";
             return View(piesListViewModel);
+        }
+        
+
+        public IActionResult Details(int id)
+        {
+            var pie = _pieRepository.GetPieById(id);
+
+
+            if(pie == null)
+            {
+                return NotFound();
+            }
+
+            return View(pie);
         }
     }
 }
